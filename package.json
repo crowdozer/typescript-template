@@ -1,28 +1,25 @@
 {
-    "name": "typescript-template",
-    "version": "0.1.0",
-    "description": "minimal typescript template",
-    "main": "./src/index.js",
-    "scripts": {
-        "start": "node ./build/index.js",
-        "dev": "nodemon ./src/index.ts",
-        "build": "npm run util:circular && rimraf build && ttsc -P ./tsconfig.json",
-        "util:rimraf": "rimraf node_modules",
-        "util:circular": "dpdm --no-warning --exit-code circular:1 ./src/index.ts"
-    },
-    "author": "crowdozer",
-    "license": "ISC",
-    "devDependencies": {
-        "@zerollup/ts-transform-paths": "^1.7.18",
-        "cross-env": "^7.0.3",
-        "dotenv": "^8.2.0",
-        "dpdm": "^3.10.0",
-        "nodemon": "^2.0.15",
-        "prettier": "^2.7.1",
-        "rimraf": "^3.0.2",
-        "ts-node": "^10.9.1",
-        "tsconfig-paths": "^4.1.0",
-        "ttypescript": "^1.5.13",
-        "typescript": "^4.8.3"
-    }
+  "name": "typescript-template",
+  "version": "0.1.0",
+  "description": "a reasonable and minimal typescript template",
+  "author": "crowdozer<business@crwdzr.io>",
+  "main": "./src/index.ts",
+  "scripts": {
+    "build": "rimraf dist && tsup ./src/index.ts --format cjs,esm --dts --sourcemap",
+    "watch": "rimraf dist && tsup ./src/index.ts --format cjs,esm --dts --sourcemap --watch",
+    "format": "prettier . --write",
+    "lint": "tsc",
+    "start": "node ./dist/index.js",
+    "dev": "nodemon ./src/index.ts"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.1.0",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.1",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.2"
+  }
 }
